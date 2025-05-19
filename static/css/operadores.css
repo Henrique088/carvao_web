@@ -1,0 +1,164 @@
+/* Herda estilos base */
+.equipes {
+    padding: 2rem;
+}
+
+.equipes h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #3498db; /* Azul temático */
+    padding-bottom: 0.5rem;
+}
+
+/* Componentes específicos */
+.shift-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.shift-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.shift-filter input {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+}
+
+.shift-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.shift-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.shift-time {
+    flex: 1;
+}
+
+.shift-time small {
+    display: block;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.shift-operators {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.operator-badge {
+    background: #3498db;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* Quadro de operadores */
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.operator-card {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    position: relative;
+}
+
+.operator-avatar {
+    width: 36px;
+    height: 36px;
+    background: #eaf2f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.8rem;
+    color: #3498db;
+}
+
+.operator-info {
+    flex: 1;
+}
+
+.operator-name {
+    display: block;
+    font-weight: 500;
+}
+
+.operator-skills {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.operator-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+}
+
+.operator-status.available {
+    background: #2ecc71;
+}
+
+.operator-status.unavailable {
+    background: #e74c3c;
+}
+
+/* Timeline de atividades */
+.activity-timeline {
+    display: grid;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    gap: 1rem;
+}
+
+.activity-time {
+    font-weight: bold;
+    color: #3498db;
+    width: 50px;
+}
+
+.activity-content {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 4px;
+}
+
+.activity-operator {
+    font-weight: 500;
+    color: #2c3e50;
+    margin-right: 0.5rem;
+}

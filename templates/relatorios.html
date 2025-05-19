@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}Relatórios e Análises{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="relatorios">
+    <h1><i class="fas fa-chart-line"></i> Relatórios e Análises</h1>
+    
+    <div class="relatorios-grid">
+        <!-- Tempo Médio de Produção -->
+        <div class="card tempo-producao">
+            <div class="card-header">
+                <h2><i class="fas fa-clock"></i> Tempo Médio por Bateria</h2>
+                <div class="time-filter">
+                    <select id="periodo">
+                        <option>Últimos 7 dias</option>
+                        <option>Últimos 30 dias</option>
+                        <option>Este mês</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="furnace-comparison">
+                    <div class="furnace-stats">
+                        <div class="furnace-stat">
+                            <span class="furnace-name">Bateria A</span>
+                            <span class="furnace-time">5h 42m</span>
+                            <div class="time-bar" style="--percentage: 75%"></div>
+                        </div>
+                        <!-- Mais baterias... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Eficiência de Carbonização -->
+        <div class="card eficiencia">
+            <div class="card-header">
+                <h2><i class="fas fa-percentage"></i> Eficiência de Carbonização</h2>
+            </div>
+            <div class="card-body">
+                <div class="efficiency-metric">
+                    <span class="metric-value">78%</span>
+                    <span class="metric-label">Média Geral</span>
+                </div>
+                <canvas id="efficiencyChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Consumo vs. Produção -->
+        <div class="card consumo-producao">
+            <div class="card-header">
+                <h2><i class="fas fa-balance-scale"></i> Lenha vs. Carvão</h2>
+                <button class="btn-export">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="ratio-indicator">
+                    <div class="ratio-value">
+                        <span>1m³ lenha</span>
+                        <i class="fas fa-arrows-alt-h"></i>
+                        <span>≈ 320kg carvão</span>
+                    </div>
+                </div>
+                <canvas id="consumoProducaoChart"></canvas>
+            </div>
+            <button class="btn-generate-report">
+                <i class="fas fa-file-export"></i> <a href="/gerar_relatorio">Gerar Relatório colorido</a>
+            </button>
+            <button class="btn-generate-report">
+                <i class="fas fa-file-export"></i> <a href="/lista">Gerar Relatório simples</a>
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/relatorios.js') }}"></script>
+{% endblock %}

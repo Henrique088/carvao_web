@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Controle de Insumos{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/insumos.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="insumos">
+    <h1><i class="fas fa-boxes"></i> Controle de Insumos e Materiais</h1>
+    
+    <div class="insumos-grid">
+        <!-- Gestão de Matéria-Prima -->
+        <div class="card materia-prima">
+            <div class="card-header">
+                <h2><i class="fas fa-tree"></i> Gestão de Lenha</h2>
+                <button class="btn-icon" id="adicionarLenha">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="stock-level">
+                    <div class="gauge-container">
+                        <div class="gauge" style="--percentage: 65%">
+                            <div class="gauge-fill"></div>
+                        </div>
+                        <span class="gauge-value">65%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="stock-item">
+                            <span>Disponível:</span>
+                            <strong>32 m³</strong>
+                        </div>
+                        <div class="stock-item">
+                            <span>Consumo médio:</span>
+                            <strong>5 m³/dia</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="consumo-table">
+                    <div class="table-header">
+                        <span>Data</span>
+                        <span>Quantidade</span>
+                    </div>
+                    <!-- Itens da tabela... -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Controle de Estoque -->
+        <div class="card estoque">
+            <div class="card-header">
+                <h2><i class="fas fa-warehouse"></i> Níveis de Estoque</h2>
+            </div>
+            <div class="card-body">
+                <div class="inventory-items">
+                    <div class="inventory-item">
+                        <div class="item-info">
+                            <i class="fas fa-fire-extinguisher"></i>
+                            <span>Extintores</span>
+                        </div>
+                        <div class="item-status in-stock">
+                            <span>12 unidades</span>
+                        </div>
+                    </div>
+                    <!-- Mais itens... -->
+                </div>
+                <button class="btn-inventory">
+                    <i class="fas fa-clipboard-list"></i> Gerar Relatório
+                </button>
+            </div>
+        </div>
+        
+        <!-- Previsão de Reposição -->
+        <div class="card reposicao">
+            <div class="card-header">
+                <h2><i class="fas fa-truck-loading"></i> Previsão de Reposição</h2>
+            </div>
+            <div class="card-body">
+                <div class="replenishment-alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Lenha necessária em <strong>3 dias</strong></p>
+                </div>
+                <canvas id="consumoChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/insumos.js') }}"></script>
+{% endblock %}

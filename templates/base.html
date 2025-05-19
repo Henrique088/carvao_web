@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema de Gestão{% endblock %}</title>
+    {% block styles %}{% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body>
+    <nav>
+        <!-- Navegação -->
+        <a href="/dashboard">Dashboard</a>
+        <a href="/fornos">Fornos</a>
+        <a href="/producao">Produção</a>
+        <a href="/operadores">Operadores</a>
+        <a href="/insumos">Insumos</a>
+        <a href="/relatorios">Relatórios</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %} {% endblock %}
+</body>
+</html>

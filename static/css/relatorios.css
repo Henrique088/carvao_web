@@ -1,0 +1,87 @@
+/* Herda estilos base */
+.relatorios {
+    padding: 2rem;
+}
+
+.relatorios h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #9b59b6; /* Roxo temático */
+    padding-bottom: 0.5rem;
+}
+
+/* Componentes específicos */
+.time-filter select {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.furnace-stats {
+    display: grid;
+    gap: 1rem;
+}
+
+.furnace-stat {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-bar {
+    height: 20px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.time-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--percentage);
+    background: #9b59b6;
+    border-radius: 10px;
+}
+
+.efficiency-metric {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.efficiency-metric .metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    display: block;
+}
+
+.efficiency-metric .metric-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.ratio-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.ratio-value {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 20px;
+}
+
+.ratio-value i {
+    color: #9b59b6;
+}

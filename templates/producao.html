@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro de Produção{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/producao.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="producao">
+    <h1><i class="fas fa-fire-alt"></i> Registro de Produção</h1>
+    
+    <div class="producao-grid">
+        <!-- Controle de Ciclos -->
+        <div class="card ciclos">
+            <div class="card-header">
+                <h2><i class="fas fa-sync-alt"></i> Controle de Ciclos</h2>
+                <button class="btn-icon" id="novoCiclo">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="cycle-list">
+                    <div class="cycle-item active">
+                        <div class="cycle-info">
+                            <span class="cycle-id">Ciclo #0245</span>
+                            <span class="cycle-status">Em andamento</span>
+                        </div>
+                        <div class="cycle-time">
+                            <i class="fas fa-clock"></i>
+                            <span>02:45:17</span>
+                        </div>
+                    </div>
+                    <!-- Mais ciclos... -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Registro Temporal -->
+        <div class="card registros">
+            <div class="card-header">
+                <h2><i class="fas fa-calendar-alt"></i> Histórico Temporal</h2>
+            </div>
+            <div class="card-body">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Ciclo #0244</h3>
+                            <p>Início: 15/03 08:30 | Término: 15/03 14:45</p>
+                            <span class="volume">Volume: 320kg</span>
+                        </div>
+                    </div>
+                    <!-- Mais itens... -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Métricas de Produção -->
+        <div class="card metricas">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-bar"></i> Métricas</h2>
+            </div>
+            <div class="card-body">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-value">6.2</span>
+                        <span class="metric-label">Horas/ciclo</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">285</span>
+                        <span class="metric-label">kg/ciclo</span>
+                    </div>
+                </div>
+                <canvas id="productionChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/producao.js') }}"></script>
+{% endblock %}

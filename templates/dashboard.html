@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Gerencial{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <h1><i class="fas fa-tachometer-alt"></i> Dashboard Gerencial</h1>
+    
+    <div class="dashboard-grid">
+        <!-- Visão geral da produção -->
+        <div class="card production">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-pie"></i> Visão Geral da Produção</h2>
+            </div>
+            <div class="card-body">
+                <div class="metric">
+                    <span class="value">1,250</span>
+                    <span class="label">Kg produzidos hoje</span>
+                </div>
+                <div class="metric">
+                    <span class="value">85%</span>
+                    <span class="label">Meta diária</span>
+                </div>
+                <canvas id="productionChart" height="150"></canvas>
+            </div>
+        </div>
+        
+        <!-- Status dos fornos -->
+        <div class="card furnaces">
+            <div class="card-header">
+                <h2><i class="fas fa-fire"></i> Status dos Fornos</h2>
+            </div>
+            <div class="card-body">
+                <div class="furnace-status">
+                    <div class="furnace active">
+                        <span class="furnace-id">Forno #1</span>
+                        <span class="status-badge active">Ativo</span>
+                    </div>
+                    <div class="furnace warning">
+                        <span class="furnace-id">Forno #2</span>
+                        <span class="status-badge warning">Manutenção</span>
+                    </div>
+                    <div class="furnace inactive">
+                        <span class="furnace-id">Forno #3</span>
+                        <span class="status-badge inactive">Inativo</span>
+                    </div>
+                    <div class="furnace active">
+                        <span class="furnace-id">Forno #4</span>
+                        <span class="status-badge active">Ativo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alertas e notificações -->
+        <div class="card alerts">
+            <div class="card-header">
+                <h2><i class="fas fa-bell"></i> Alertas</h2>
+                <span class="badge">3</span>
+            </div>
+            <div class="card-body">
+                <div class="alert-list">
+                    <div class="alert-item critical">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="alert-content">
+                            <h3>Temperatura crítica</h3>
+                            <p>Forno #2 excedeu 450°C</p>
+                            <span class="alert-time">10 min atrás</span>
+                        </div>
+                    </div>
+                    <div class="alert-item warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div class="alert-content">
+                            <h3>Estoque baixo</h3>
+                            <p>Lenha abaixo do nível mínimo</p>
+                            <span class="alert-time">1 hora atrás</span>
+                        </div>
+                    </div>
+                    <div class="alert-item info">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="alert-content">
+                            <h3>Produção concluída</h3>
+                            <p>Forno #1 finalizou ciclo</p>
+                            <span class="alert-time">2 horas atrás</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Inclua Chart.js para os gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

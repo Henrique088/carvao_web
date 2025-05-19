@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorio_mensal.css') }}">
+  <style>
+    table {
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .titulo {
+      font-weight: bold;
+    }
+
+    .fundo-amarelo {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Legenda -->
+<table style="width: 30%; position: absolute;left: 30%;">
+  <tr >
+    <td colspan="1" rowspan="3" style="text-align: center; font-weight: bold;transform: rotate(-50deg);width: 10%;border-width: 2px;">Legenda</td>
+    <td style="background-color: #ffbf00;width: 5%; border-width: 2px;">L</td>
+    <td style="text-align: left;width: 10%; border-width: 2px;">LENHA</td>
+
+    <td style="background-color: #00b04f; width: 5%; border-width: 2px;">D</td>
+    <td style="text-align: left; width: 10%;border-width: 2px;">DESCARGA</td>
+
+    <tr>
+      <td style="background-color: #ff0000; border-width: 2px;">C</td>
+      <td style="text-align: left;">CARBONIZAÇÃO</td>
+
+      <td style="background-color: #daedf2; border-width: 2px;">V</td>
+      <td style="text-align: left; border-width: 2px;">VAZIO</td>
+    </tr>
+
+    <tr>
+      <td style="background-color:#66ffff; border-width: 2px;">R</td>
+      <td style="text-align: left; border-width: 2px;">RESFRIAMENTO</td>
+
+      <td style="background-color:#996632; border-width: 2px;">M</td>
+      <td style="text-align: left; border-width: 2px;">MANUTENÇÃO</td>
+    </tr>
+  </tr>
+</table>
+
+
+<!-- Dia Mes ano N° Documento -->
+<table style="position: absolute;left: 65%; width: 20%;border: none;">
+  <tr>
+    <td colspan="1" style="border: none;">Dia</td>
+    <td colspan="1" style="border: none;">Mês</td>
+    <td colspan="1" style="border: none;">Ano</td>
+  </tr>
+
+  <tr>
+    <td colspan="1" class="fundo-amarelo" style="border: none;">29</td>
+    <td colspan="1" style="border: none; font-weight: bold;">9</td>
+    <td colspan="4" style="border: none; font-weight: bold;">2023</td>
+    <td colspan="1" style="border: none;">No. D</td>
+    <td colspan="1" style="border: none;">30</td>
+  </tr>
+
+
+</table>
+
+
+
+ <!-- Cabeçalho -->
+<table style="border: none;">
+ 
+   <tr>
+    <td colspan="12">Produção por forno(PREVISÃO):</td>
+    <td colspan="2">100</td>
+   </tr>
+   <tr>
+    <td colspan="12" style="border-left: none;text-align: right;padding-right: 36px;">Real</td>
+    <td colspan="2">105</td>
+   </tr>
+
+   <tr>
+    <td colspan="4" style="border-right: none;">PL</td>
+    <td colspan="8" style="border-left: none;">PLANEJADO</td>
+   </tr>
+   <tr>
+    <td colspan="4" style="border-right: none;">RE</td>
+    <td colspan="8" style="border-left: none;">REALIZADO</td>
+   </tr>
+
+  <!-- Primeira linha -->
+  <tr>
+    <td colspan="4" rowspan="1" style="border-right: none;">MÊS/ANO:</td>
+    <td colspan="4" class="titulo" style="border-left: none; border-right: none;">Set/23</td>
+    <td colspan="22" class="titulo" style="border-left:none">LÍDER DA PLANTA: CLEITON XAVIER</td>
+    <td colspan="{{dias_mes-20}}" class="titulo">UPC MATA VERDE</td>
+    
+    <td  colspan="10"></td>
+  </tr>
+
+  <!-- Segunda linha -->
+  <tr>
+    <td colspan="4" style="border-bottom: none;">Nº</td>
+    <td colspan="2" style="border-bottom: none;">FR</td>
+    <td colspan="2"></td>
+    <td colspan="{{dias_mes}}">DIAS</td>
+    <td colspan="4"></td>
+    <td colspan="4"></td>
+    <td colspan="4"></td>
+    
+    <!-- Dias 1 a 31 -->
+   
+  </tr>
+
+  <!-- Terceira linha: dias da semana -->
+  <tr>
+    <td colspan="4" style="border-top:none;">AP</td>
+    <td colspan="2" style="border-top:none;">n°</td>
+    <td colspan="2"></td>
+    {% for dia in range(1, dias_mes+1) %}
+      <td {% if dias_semana[dia-1] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ dia }}</td>
+    {% endfor %}
+    <td colspan="4" rowspan="2">N° Ciclos</td>
+    <td colspan="4" rowspan="2">mdc/forno</td>
+    <td colspan="4" rowspan="2">mdc total</td> 
+  </tr>
+  <tr>
+    <td colspan="8"></td>
+    {% for dia in range(1, dias_mes+1) %}
+      <td {% if dias_semana[dia-1] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ dias_semana[dia-1] }}</td>
+    {% endfor %}
+  </tr>
+
+  <tbody style="border: none;">
+            {% for forno in fornos %}
+                <tr>
+                  <td colspan="4"></td>
+                  <td colspan="2" rowspan="2">{{forno.numero}}</td>
+                    <td colspan="2">PL</td>
+                    {% for status in forno.PL %}
+                        <td class="{{ status }}">{{ status }}</td>
+                    {% endfor %}
+                  <td colspan="4">{{forno.ciclos_pl}}</td>
+                  <td colspan="4">{{forno.mdc_pl}}</td>
+                  <td colspan="4">{{forno.mdc_total_pl}}</td>
+                </tr>
+                <tr>
+                  <td colspan="4"></td>
+                   <td colspan="2">RE</td>
+                    {% for status in forno.RE %}
+                        <td class="{{ status }}">{{ status }}</td>
+                    {% endfor %}
+
+                  <td colspan="4">{{forno.ciclos_re}}</td>
+                  <td colspan="4">{{forno.mdc_re}}</td>
+                  <td colspan="4">{{forno.mdc_total_re}}</td>
+              
+                </tr>
+            {% endfor %}
+
+            <tr>
+              <td colspan="6">Produção</td>
+              <td colspan="2">PL</td>
+             {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="4" style="background-color: yellow;font-weight: bold;">{{producao_1[dia]}}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao_1[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+
+              <td colspan="4" style="border: none; font-weight: bold;"> 5,79</td>
+              <td colspan="4" style="border: none; font-weight: bold;"> 620</td>
+            </tr>
+
+            <tr>
+              <td colspan="6">(Fornadas)</td>
+              <td colspan="2">RE</td>
+            {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="4" style="background-color: greenyellow;font-weight: bold;">{{producao_2[dia]}}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao_2[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+
+              <td style="font-weight: bold; border: none;">CICLO</td>
+            </tr>
+            <tr>
+              <td colspan="50" style="border: none;"></td>
+            </tr>
+
+
+            <tr>
+              <td colspan="6" rowspan="2">Produção (MDC)</td>
+              <td colspan="2">PL</td>
+              {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="4" style="background-color: yellow;font-weight: bold;">{{producao[dia]}}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+
+            <tr>
+              <td colspan="2">RE</td>
+              {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="4" style="background-color: greenyellow;font-weight: bold;">{{ "%.3f"|format(producao_re[dia]) }}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao_re[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+
+
+            <tr>
+              <td colspan="50" style="border: none;"></td>
+            </tr>
+            
+            
+            <tr>
+              <td colspan="6" rowspan="2">Lenha (st)</td>
+              <td colspan="2">PL</td>
+              {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="2" style="background-color: yellow;font-weight: bold;">{{lenha_1[dia]}}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ lenha_1[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+
+
+            </tr>
+
+            <tr>
+              <td colspan="2">RE</td>
+              {% for dia in range(0, dias_mes+1) %}
+
+              {% if loop.last %}
+                <td colspan="2" style="background-color: greenyellow;font-weight: bold;">{{ lenha_2[dia] }}</td>
+
+              {% else %}
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ lenha_2[dia] }}</td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+          
+        </tbody>
+</table>
+
+<table style="border: none;width: 90%;">
+  <th colspan="{{dias_mes+4}}" style="background-color: #e4dfed;">QUANTIDADE DE FORNOS REFERENTE AO PERÍODO DO FORNO DE ACORDO COM O PLANEJADO</th>
+  <tr>
+    <td colspan="4" style="background-color: #e4dfed;">DATA</td>
+    {% for dia in range(1, dias_mes+1) %}
+      <td>{{ dia }}</td>
+    {% endfor %}
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ffbf00;">L</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_l[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_l[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_l[dias_mes+1]}}</td>
+
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ff0000;">C</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_c[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_c[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_c[dias_mes+1]}}</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #66ffff;">R</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_r[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_r[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_r[dias_mes+1]}}</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #66ffff;">D</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_d[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_d[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_d[dias_mes+1]}}</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ff0000;">V</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_v[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_v[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_v[dias_mes+1]}}</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #996632;">M</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado_m[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado_m[dias_mes]}}</td>
+    <td style="border: none; font-weight: bold;">{{planejado_m[dias_mes+1]}}</td>
+  </tr>
+
+   <tr>
+    <td colspan="4" style="border: none;"></td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ planejado[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold;">{{planejado[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{planejado[dias_mes+1]}}</td>
+  </tr>
+
+  <tr>
+    <td style="border: none;" colspan="34"></td>
+    <td style="border: none; font-weight: bold;">600</td>
+  </tr>
+
+  <tr>
+    <td style="border: none; " colspan="34"></td>
+    <td style="border: none; font-weight: bold;">11,32</td>
+  </tr>
+</table>
+
+
+
+<table style="border: none;width: 90%;">
+  <th colspan="{{dias_mes+4}}" style="background-color: #e4dfed;">QUANTIDADE DE FORNOS REFERENTE AO PERÍODO DO FORNO DE ACORDO COM O REALIZADO</th>
+  <tr>
+    <td colspan="4" style="background-color: #e4dfed;">DATA</td>
+    {% for dia in range(1, dias_mes+1) %}
+      <td>{{ dia }}</td>
+    {% endfor %}
+
+    <td style="border-top: none;border-right: none;" colspan="4">Dias.Fornos</td>
+    <td style="border-top: none;border-right: none;border-right: none; border-left: none;" colspan="4">Real</td>
+    <td style="border-top: none;border-right: none; border-left: none;" colspan="4">Plan</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ffbf00;">L</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_l[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_l[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_l[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_l[dias_mes+2]}}</td>
+    <td class="L" style="color: black; font-weight: bold;">L</td>
+
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ff0000;">C</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_c[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_c[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_c[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_c[dias_mes+2]}}</td>
+    <td class="C" style="color: black; font-weight: bold;">C</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #66ffff;">R</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_r[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_r[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_r[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_r[dias_mes+2]}}</td>
+    <td class="R" style="color: black; font-weight: bold;">R</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #66ffff;">D</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_d[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_d[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_d[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_d[dias_mes+2]}}</td>
+    <td class="D" style="color: black; font-weight: bold;">D</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #ff0000;">V</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_v[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_v[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_v[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_v[dias_mes+2]}}</td>
+    <td class="V" style="color: black; font-weight: bold;">V</td>
+  </tr>
+
+  <tr>
+    <td colspan="4" style="background-color: #996632;">M</td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado_m[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_m[dias_mes]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_m[dias_mes+1]}}</td>
+    <td colspan="4" style="border: none; font-weight: bold;">{{realizado_m[dias_mes+2]}}</td>
+    <td class="M" style="color: black; font-weight: bold;">M</td>
+  </tr>
+
+   <tr>
+    <td colspan="4" style="border: none;"></td>
+    {% for dia in range(0, dias_mes) %}
+      <td>{{ realizado[dia] }}</td>
+    {% endfor %}
+
+    <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold;">{{realizado[dias_mes]}}</td>
+    <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold; font-weight: bold;">{{realizado[dias_mes+1]}}</td>
+    <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold; font-weight: bold;">{{realizado[dias_mes+2]}}</td>
+  </tr>
+
+ 
+</table>
+</body>
+</html>

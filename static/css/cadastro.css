@@ -1,0 +1,121 @@
+/* Herda estilos base */
+.cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.cadastro-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.cadastro h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.cadastro h1 i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.cadastro-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.password-strength {
+    display: flex;
+    gap: 4px;
+    height: 4px;
+    margin-top: 4px;
+}
+
+.strength-bar {
+    flex: 1;
+    background: #ecf0f1;
+    border-radius: 2px;
+}
+
+.form-actions {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-cadastrar {
+    background: #3498db;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-cadastrar:hover {
+    background: #2980b9;
+}
+
+.btn-login {
+    text-align: center;
+    color: #3498db;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+/* Validação visual */
+input:invalid {
+    border-color: #e74c3c;
+}
+
+input:valid {
+    border-color: #2ecc71;
+}

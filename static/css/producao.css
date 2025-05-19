@@ -1,0 +1,100 @@
+/* Herda estilos base */
+.producao {
+    padding: 2rem;
+}
+
+.producao h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #f39c12; /* Laranja temático */
+    padding-bottom: 0.5rem;
+}
+
+/* Componentes específicos */
+.cycle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-left: 4px solid #f39c12;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+}
+
+.cycle-item.active {
+    border-left-color: #2ecc71;
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.cycle-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -1.5rem;
+    width: 12px;
+    height: 12px;
+    background: #f39c12;
+    border-radius: 50%;
+    top: 4px;
+}
+
+.timeline-content {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 4px;
+}
+
+.volume {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    background: #eaf2f8;
+    border-radius: 4px;
+    color: #2980b9;
+}
+
+/* Métricas */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-card {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    display: block;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}

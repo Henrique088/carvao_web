@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1, h2 {
+    color: #2c3e50;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table, td, th {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  thead {
+    background-color: #eee;
+  }
+  
+  .L {
+    background-color: #ffbf00; /* Marrom para lenha */
+    color: white;
+  }
+  .C {
+    background-color: #ff0000; /* Verde para carbonização */
+    color: white;
+  }
+  .R {
+    background-color: #66ffff; /* Azul para resfriamento */
+  }
+  .D {
+    background-color: #00b04f; /* Vermelho para descarga */
+    color: white;
+  }
+  .V {
+    background-color: #daedf2; /* Amarelo para vazio */
+  }
+  .M {
+    background-color: #996632; /* Manutenção */
+    color: white;
+  }
+  
+  .producao td {
+    background-color: #dcdcdc;
+  }
+  

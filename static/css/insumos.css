@@ -1,0 +1,121 @@
+/* Herda estilos base */
+.insumos {
+    padding: 2rem;
+}
+
+.insumos h1 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 2px solid #27ae60; /* Verde temático */
+    padding-bottom: 0.5rem;
+}
+.insumos-grid{
+    display: flex;
+    flex-direction: column; 
+    /* gap: 4rem;  */
+}
+/* Componentes específicos */
+.stock-level {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.gauge-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    
+}
+
+.gauge {
+    width: 100%;
+    height: 100%;
+    background: #ecf0f1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--percentage);
+    background: #27ae60;
+    transform-origin: bottom;
+    transform: rotate(0.5turn);
+}
+
+.gauge-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stock-info {
+    flex-grow: 1;
+}
+
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+/* Itens de inventário */
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 0.8rem;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.item-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.in-stock {
+    background: #d4edda;
+    color: #155724;
+}
+
+.low-stock {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Alerta de reposição */
+.replenishment-alert {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff3cd;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    color: #856404;
+}
+
+.replenishment-alert i {
+    font-size: 1.5rem;
+}

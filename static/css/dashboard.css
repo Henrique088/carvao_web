@@ -1,0 +1,237 @@
+/* Reset e Variáveis */
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --success: #2ecc71;
+    --light: #ecf0f1;
+    --dark: #34495e;
+    --gray: #95a5a6;
+}
+
+/* Dashboard */
+.dashboard {
+    padding: 2rem;
+}
+
+.dashboard h1 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard h1 i {
+    margin-right: 10px;
+    color: var(--warning);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Cards */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-header h2 i {
+    margin-right: 10px;
+    color: var(--secondary);
+}
+
+.card-header .badge {
+    background-color: var(--danger);
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Status dos Fornos */
+.furnace-status {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.furnace {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.status-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.inactive {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+/* Alertas */
+.alert-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.alert-item {
+    display: flex;
+    padding: 0.8rem;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.alert-item i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.alert-content {
+    flex-grow: 1;
+}
+
+.alert-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.alert-item p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 0.3rem;
+}
+
+.alert-time {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.alert-item.critical {
+    border-left-color: var(--danger);
+    background-color: rgba(250, 37, 13, 0.1);
+}
+
+.alert-item.warning {
+    border-left-color: var(--warning);
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+.alert-item.info {
+    border-left-color: var(--secondary);
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Métricas */
+.metric {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.metric .value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    display: block;
+}
+
+.metric .label {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        flex-direction: row;
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .logo {
+        padding: 0 1rem 0 0;
+    }
+    
+    .nav-links {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    
+    .nav-links a {
+        flex-direction: column;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .nav-links a.active {
+        border-left: none;
+        border-bottom: 3px solid var(--warning);
+    }
+    
+    .nav-links i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .user-profile {
+        padding: 0 0 0 1rem;
+        font-size: 1.5rem;
+    }
+    
+    .dashboard {
+        padding: 1rem;
+    }
+}
