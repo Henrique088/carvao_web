@@ -213,10 +213,10 @@
               {% for dia in range(0, dias_mes+1) %}
 
               {% if loop.last %}
-                <td colspan="4" style="background-color: yellow;font-weight: bold;">{{producao[dia]}}</td>
+                <td colspan="4" style="background-color: yellow;font-weight: bold;">{{producao_pl[dia]}}</td>
 
               {% else %}
-                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao[dia] }}</td>
+                <td {% if dias_semana[dia] == 'dom' %}class="fundo-amarelo"{% endif %}>{{ producao_pl[dia] }}</td>
               {% endif %}
               {% endfor %}
             </tr>
