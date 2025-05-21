@@ -1,4 +1,4 @@
-// Exemplo completo:
+
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('productionChart').getContext('2d');
     new Chart(ctx, {
