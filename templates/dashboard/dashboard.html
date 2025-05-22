@@ -3,7 +3,7 @@
 {% block title %}Dashboard Gerencial{% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/dashboard.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -99,5 +99,5 @@
 {% block scripts %}
 <!-- Inclua Chart.js para os gráficos -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/dashboard.js') }}"></script>
 {% endblock %}

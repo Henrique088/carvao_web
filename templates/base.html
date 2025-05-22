@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Sistema de Gestão{% endblock %}</title>
@@ -7,20 +8,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
+
 <body>
     <nav>
         <!-- Navegação -->
-        <a href="/dashboard">Dashboard</a>
-        <a href="/fornos">Fornos</a>
-        <a href="/producao">Produção</a>
-        <a href="/operadores">Operadores</a>
-        <a href="/insumos">Insumos</a>
-        <a href="/relatorios">Relatórios</a>
+        <a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/fornos"><i class="fas fa-industry"></i> Fornos</a>
+        <a href="/producao"><i class="fas fa-fire-alt"> </i> Produção</a>
+        <a href="/operadores"><i class="fas fa-users-cog"></i> Operadores</a>
+        <a href="/insumos"><i class="fas fa-boxes"> </i> Insumos</a>
+        <!-- <a href="/relatorios"><i class="fas fa-chart-line"></i> Relatórios</a> -->
+        <ul class="has-submenu">
+            <a href="/relatorios">
+                <i class="fas fa-chart-line"></i> Relatórios
+                <i class="fas fa-chevron-down submenu-icon"></i>
+            </a>
+            <ul class="submenu">
+
+                <li><a href="/producao_consolidado">Produção Consolidado</a></li>
+                <li><a href="/producao_diario">Produção Diário</a></li>
+            </ul>
+        </ul>
     </nav>
 
     <main>
         {% block content %}{% endblock %}
     </main>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     {% block scripts %} {% endblock %}
 </body>
+
 </html>

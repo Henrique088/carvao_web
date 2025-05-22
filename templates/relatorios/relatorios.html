@@ -3,7 +3,7 @@
 {% block title %}Relatórios e Análises{% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios/relatorios.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -69,12 +69,12 @@
                 </div>
                 <canvas id="consumoProducaoChart"></canvas>
             </div>
-            <button class="btn-generate-report">
+            <!-- <button class="btn-generate-report">
                 <i class="fas fa-file-export"></i> <a href="/gerar_relatorio">Gerar Relatório colorido</a>
             </button>
             <button class="btn-generate-report">
                 <i class="fas fa-file-export"></i> <a href="/lista">Gerar Relatório simples</a>
-            </button>
+            </button> -->
         </div>
     </div>
 </section>
@@ -82,5 +82,5 @@
 
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/relatorios.js') }}"></script>
+<script src="{{ url_for('static', filename='js/relatorios/relatorios.js') }}"></script>
 {% endblock %}
