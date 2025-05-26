@@ -19,16 +19,21 @@
         <a href="/insumos"><i class="fas fa-boxes"> </i> Insumos</a>
         <!-- <a href="/relatorios"><i class="fas fa-chart-line"></i> Relatórios</a> -->
         <ul class="has-submenu">
-            <a href="/relatorios">
-                <i class="fas fa-chart-line"></i> Relatórios
-                <i class="fas fa-chevron-down submenu-icon"></i>
-            </a>
-            <ul class="submenu">
+            <li class="{% if request.path.startswith('/relatorios') %}open{% endif %}">
+                <a href="/relatorios">
+                    <i class="fas fa-chart-line"></i> Relatórios
+                </a>
+                <button class="submenu-toggle">
+                    <i class="fas submenu-icon {% if request.path.startswith('/relatorios') %}fa-chevron-up{% else %}fa-chevron-down{% endif %}"></i>
 
-                <li><a href="/producao_consolidado">Produção Consolidado</a></li>
-                <li><a href="/producao_diario">Produção Diário</a></li>
-            </ul>
+                </button>
+                <ul class="submenu">
+                    <li><a href="/producao_consolidado">Produção Consolidado</a></li>
+                    <li><a href="/producao_diario">Produção Diário</a></li>
+                </ul>
+            </li>
         </ul>
+
     </nav>
 
     <main>

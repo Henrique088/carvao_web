@@ -129,28 +129,36 @@ h1 {
 
 
 
-.has-submenu .submenu {
+.submenu {
     display: none;
-    list-style: none;
-    position: absolute;
-    padding-left: 12px;
-}
-
-.has-submenu.open .submenu {
-    display: block;
-}
-
-
-.submenu li a{
-    font-size: 16px;
-}
-
-.submenu{
-    display: flex;
+    margin-left: 10px;
+    padding-top: 10px;
     flex-direction: column;
-    margin-top: 20px;
 }
 
-.has-submenu .submenu li {
-    margin-bottom: 20px;
+.has-submenu li.open .submenu {
+    display: flex;
+}
+
+.submenu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    /* margin-left: 8px; */
+}
+
+li {
+    list-style: none;
+
+}
+
+.submenu li {
+    margin-bottom: 15px;
+    margin-top: 4px;
+}
+
+.submenu li a {
+    
+    font-size: medium;
 }

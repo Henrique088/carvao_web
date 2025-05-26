@@ -1,9 +1,10 @@
-document.querySelectorAll('.has-submenu > a').forEach(link => {
-    link.addEventListener('click', e => {
+document.querySelectorAll('.submenu-toggle').forEach(button => {
+    button.addEventListener('click', e => {
         e.preventDefault();
+        e.stopPropagation(); // evita conflito com o clique do <a>
 
-        const parent = link.parentElement;
-        const icon = link.querySelector('.submenu-icon');
+        const parent = button.closest('li');
+        const icon = button.querySelector('.submenu-icon');
 
         parent.classList.toggle('open');
 

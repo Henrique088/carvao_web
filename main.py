@@ -71,7 +71,6 @@ def lista():
 def relatorio():
     dias_semana = []
     dias_mes = 0
-    print(fornos)
     for dia in range(1, 32):
         try:
             data = datetime(2023, 9, dia)
