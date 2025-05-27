@@ -9,7 +9,7 @@
 {% block content %}
 <section class="producao">
     <h1><i class="fas fa-fire-alt"></i> Registro de Produção</h1>
-    
+
     <div class="producao-grid">
         <!-- Controle de Ciclos -->
         <div class="card ciclos">
@@ -31,11 +31,11 @@
                             <span>02:45:17</span>
                         </div>
                     </div>
-                    <!-- Mais ciclos... -->
+                    
                 </div>
             </div>
         </div>
-        
+
         <!-- Registro Temporal -->
         <div class="card registros">
             <div class="card-header">
@@ -51,11 +51,11 @@
                             <span class="volume">Volume: 320kg</span>
                         </div>
                     </div>
-                    <!-- Mais itens... -->
+                   
                 </div>
             </div>
         </div>
-        
+
         <!-- Métricas de Produção -->
         <div class="card metricas">
             <div class="card-header">
@@ -77,6 +77,26 @@
         </div>
     </div>
 </section>
+
+<!-- Modal de Novo Ciclo -->
+<div id="modalCiclo" class="modal">
+    <div class="modal-content">
+        <span class="close" id="fecharModalCiclo">&times;</span>
+        <h2><i class="fas fa-plus-circle"></i> Novo Ciclo</h2>
+        <form id="formCiclo">
+            <label for="ciclo">Ciclo:</label>
+            <input type="text" id="ciclo" name="ciclo" required>
+
+            <label for="tempo">Tempo:</label>
+            <input type="text" id="tempo" name="tempo" placeholder="HH:MM:SS" required>
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="3"></textarea>
+
+            <button type="submit" class="btn-salvar">Salvar</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
