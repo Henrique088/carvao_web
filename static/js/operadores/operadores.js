@@ -31,8 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeCadastroFuncionario');
     const form = document.getElementById('formFuncionario');
     const listaFuncionarios = document.getElementById('listaFuncionarios');
+    const filtros = document.getElementById('filtroOperadoresContainer');
+    const filtroBtn = document.getElementById('filtroOperadores');
+    const menu = document.getElementById('menuFiltroTurno'); // dropdown
+    const items = menu.querySelectorAll('.dropdown-item');
 
-    // Lista de funcionários em memória
     const funcionarios = [];
 
     btnNovoTurno.addEventListener('click', () => {
@@ -47,6 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
+        if (!menu.contains(e.target) && !filtroBtn.contains(e.target)) {
+            menu.style.display = 'none';
+        }
+    });
+
+    filtroBtn.addEventListener('click', () => {
+        menu.style.display =  menu.style.display === 'block'? 'none' : 'block';
+    });
+
+    // Evento de filtro por turno
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const turnoSelecionado = item.getAttribute('data-turno');
+            filtrar(turnoSelecionado);
+            menu.style.display = 'none';
+        });
     });
 
     form.addEventListener('submit', (e) => {
@@ -55,13 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const turno = form.turno.value;
         const fornos = form.fornos.value.trim();
 
-        // Salvar na lista
         const novoFuncionario = { nome, turno, fornos };
         funcionarios.push(novoFuncionario);
 
-        // Atualizar a lista visível
         renderFuncionarios();
-
         form.reset();
         modal.style.display = 'none';
     });
@@ -74,18 +90,44 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        funcionarios.forEach((f, i) => {
+        funcionarios.forEach((f) => {
             const div = document.createElement('div');
             div.className = 'funcionario-item';
-
             div.innerHTML = `
                 <div class="info">
                     <strong>${f.nome}</strong>
                     <small>Turno: ${formatarTurno(f.turno)} | Fornos: ${f.fornos}</small>
                 </div>
             `;
-
             listaFuncionarios.appendChild(div);
+        });
+    }
+
+    function filtrar(turno) {
+        filtros.innerHTML = '';
+        const filtrados = turno === 'todos'
+            ? funcionarios
+            : funcionarios.filter(f => f.turno === turno);
+
+        if (filtrados.length === 0) {
+            filtros.innerHTML = '<p style="color: #999;">Nenhum funcionário encontrado para este turno.</p>';
+            return;
+        }
+
+        filtrados.forEach(f => {
+            const div = document.createElement('div');
+            div.className = 'operator-card';
+            div.innerHTML = `
+                <div class="operator-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="operator-info">
+                    <span class="operator-name">${f.nome}</span>
+                    <span class="operator-skills">${f.fornos}</span>
+                </div>
+                <div class="operator-status available"></div>
+            `;
+            filtros.appendChild(div);
         });
     }
 

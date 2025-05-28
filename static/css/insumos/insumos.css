@@ -13,7 +13,7 @@
 .insumos-grid{
     display: flex;
     flex-direction: column; 
-    /* gap: 4rem;  */
+    gap: 4rem; 
 }
 /* Componentes específicos */
 .stock-level {

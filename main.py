@@ -58,7 +58,7 @@ def insumos():
 @app.route('/operadores')
 def operadores():
     print("Rota /operadores foi acessada")
-    return render_template('operadores/operadores.html')
+    return render_template('operadores/operadores.html', funcionarios = funcionarios, fornos_02 = fornos_02)
 
 
 @app.route('/producao_diario')

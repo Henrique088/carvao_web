@@ -129,3 +129,14 @@ realizado_v = [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 realizado_m = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '']
 realizado = [ 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 1]
 
+
+funcionarios = [
+    {"nome": "João"},
+    {"nome": "Pedro"},
+    {"nome": "José"},
+    {"nome": "Douglas"},
+    {"nome": "Carlos"},
+    {"nome": "Sergio"}
+]
+
+fornos_02 = ["Fornos #1", "Fornos #2", "Fornos #3", "Fornos #4", "Fornos #5", "Fornos #6", "Fornos #7", "Fornos #8", "Fornos #9", "Fornos #10", "Fornos #11", "Fornos #12", "Fornos #13", "Fornos #14", "Fornos #15", "Fornos #16", "Fornos #17", "Fornos #18", "Fornos #19", "Fornos #20"]

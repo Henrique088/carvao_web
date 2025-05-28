@@ -9,7 +9,7 @@
 {% block content %}
 <section class="equipes">
     <h1><i class="fas fa-users-cog"></i> Gestão de Equipes</h1>
-    
+
     <div class="equipes-grid">
         <!-- Controle de Turnos -->
         <div class="card turnos">
@@ -21,9 +21,7 @@
             </div>
 
             <!-- Lista de Funcionários Cadastrados -->
-            <div id="listaFuncionarios" class="lista-funcionarios">
-    
-            </div>
+            <div id="listaFuncionarios" class="lista-funcionarios"></div>
 
             <div class="card-body">
                 <div class="shift-controls">
@@ -52,17 +50,26 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Quadro de Operadores -->
         <div class="card operadores">
             <div class="card-header">
                 <h2><i class="fas fa-user-tie"></i> Operadores Ativos</h2>
-                <button class="btn-icon" id="filtroOperadores">
-                    <i class="fas fa-filter"></i>
-                </button>
+                <div class="dropdown-container">
+                    <button class="btn-icon" id="filtroOperadores">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                    <div class="dropdown-menu" id="menuFiltroTurno">
+                        <div class="dropdown-item" data-turno="todos">Todos</div>
+                        <div class="dropdown-item" data-turno="manha">Manhã</div>
+                        <div class="dropdown-item" data-turno="tarde">Tarde</div>
+                        <div class="dropdown-item" data-turno="noite">Noite</div>
+                    </div>
+                </div>
+
             </div>
-            <div class="card-body">
-                <div class="operator-grid">
+            <div class="card-body" id="filtroOperadoresContainer">
+                <!-- <div class="operator-grid">
                     <div class="operator-card">
                         <div class="operator-avatar">
                             <i class="fas fa-user"></i>
@@ -73,11 +80,11 @@
                         </div>
                         <div class="operator-status available"></div>
                     </div>
-                    <!-- Mais operadores... -->
-                </div>
+                   
+                </div> -->
             </div>
         </div>
-        
+
         <!-- Registro de Atividades -->
         <div class="card atividades">
             <div class="card-header">
@@ -100,33 +107,46 @@
             </div>
         </div>
     </div>
-   <!-- Modal de Cadastro de Funcionário (mesmo estilo do modal de forno) -->
-<div class="modal-overlay" id="modalCadastroFuncionario" style="display: none;">
-    <div class="modal-box">
-        <div class="modal-header">
-            <h2><i class="fas fa-user-tie"></i> Cadastrar Funcionário</h2>
-            <span class="close-modal" id="closeCadastroFuncionario">&times;</span>
-        </div>
-        <div class="modal-body">
-            <form id="formFuncionario">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
+    <!-- Modal de Cadastro de Funcionário -->
+    <div class="modal-overlay" id="modalCadastroFuncionario" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-tie"></i> Cadastrar Funcionário</h2>
+                <span class="close-modal" id="closeCadastroFuncionario">&times;</span>
+            </div>
 
-                <div class="form-group">
-                    <label for="turno">Turno:</label>
-                    <select id="turno" name="turno" required>
-                        <option value="">Selecione</option>
-                        <option value="manha">Manhã (06:00 - 14:00)</option>
-                        <option value="tarde">Tarde (14:00 - 22:00)</option>
-                        <option value="noite">Noite (22:00 - 06:00)</option>
-                    </select>
-                </div>
+            <form id="formFuncionario" class="modal-form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <select id="nome" name="nome" required>
+                            <option value="">Selecione</option>
+                            {% for func in funcionarios %}
+                            <option value="{{ func.nome }}">{{ func.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                <div class="form-group">
-                    <label for="fornos">Fornos:</label>
-                    <input type="text" id="fornos" name="fornos" placeholder="Ex: Fornos A e B" required>
+                    <div class="form-group">
+                        <label for="turno">Turno:</label>
+                        <select id="turno" name="turno" required>
+                            <option value="">Selecione o turno</option>
+                            <option value="manha">Manhã (06:00 - 14:00)</option>
+                            <option value="tarde">Tarde (14:00 - 22:00)</option>
+                            <option value="noite">Noite (22:00 - 06:00)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fornos">Fornos:</label>
+                        <select id="fornos" name="fornos" required>
+                            <option value="">Selecione</option>
+                            {% for forno in fornos_02 %}
+                            <option value="{{ forno }}">{{ forno }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -135,7 +155,7 @@
             </form>
         </div>
     </div>
-</div>
+
 
 </section>
 {% endblock %}
