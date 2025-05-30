@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios/relatorio_mensal.css') }}">
+{% extends 'base.html' %}
+
+{% block title %}Gestão de Equipes{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios/relatorio_mensal.css') }}">
   <style>
     table {
       border-collapse: collapse;
@@ -12,7 +13,7 @@
     }
 
     th, td {
-      border: 1px solid black;
+      border: 2px solid black;
       padding: 4px;
       text-align: center;
     }
@@ -25,12 +26,14 @@
       background-color: yellow;
       font-weight: bold;
     }
-  </style>
-</head>
-<body>
 
-  <!-- Legenda -->
-<table style="width: 30%; position: absolute;left: 30%;">
+ 
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class= "legenda" >
+<table style="width: 25%; ">
   <tr >
     <td colspan="1" rowspan="3" style="text-align: center; font-weight: bold;transform: rotate(-50deg);width: 10%;border-width: 2px;">Legenda</td>
     <td style="background-color: #ffbf00;width: 5%; border-width: 2px;">L</td>
@@ -59,7 +62,7 @@
 
 
 <!-- Dia Mes ano N° Documento -->
-<table style="position: absolute;left: 65%; width: 20%;border: none;">
+<table style="left: 76%; width: 20%;border: none;">
   <tr>
     <td colspan="1" style="border: none;">Dia</td>
     <td colspan="1" style="border: none;">Mês</td>
@@ -78,7 +81,7 @@
 </table>
 
 
-
+</div>
  <!-- Cabeçalho -->
 <table style="border: none;">
  
@@ -461,8 +464,4 @@
     <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold; font-weight: bold;">{{realizado[dias_mes+1]}}</td>
     <td colspan="4" style="border-top: none; border-right: none; border-left: none; font-weight: bold; font-weight: bold;">{{realizado[dias_mes+2]}}</td>
   </tr>
-
- 
-</table>
-</body>
-</html>
+{% endblock %}

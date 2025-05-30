@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    /* margin: 20px; */
   }
   
   h1, h2 {
@@ -44,9 +44,20 @@ body {
   .M {
     background-color: #996632; /* Manutenção */
     color: white;
+    
   }
   
   .producao td {
     background-color: #dcdcdc;
+  }
+
+  .legenda {
+    display: flex; gap: 60px; position: absolute; left: 45%; width: 100%;
+  }
+  @media (max-width: 768px) {
+    .legenda{
+     left: 550px;
+     gap: 30px;
+    }  
   }
   

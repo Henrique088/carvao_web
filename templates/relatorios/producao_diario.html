@@ -1,101 +1,117 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Produção Diária</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-        }
-        
-        th, td {
-            border: 2px solid #000000;
-            padding: 8px 12px;
-            text-align: center;
-        }
-        
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        tr:hover {
-            background-color: #eef;
-            transition: background-color 0.3s ease;
-        }
-        </style>
-        
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Gestão de Equipes{% endblock %}
+
+{% block styles %}
+<style>
+    nav{
+        display: none;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        border: 2px solid #000000;
+        padding: 8px 12px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #eef;
+        transition: background-color 0.3s ease;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
 <table style="width: 48%;border: none;">
     <tr>
-        <th colspan="1" style="background-color:#00b04f; font-weight: bold;border-top: none; border-bottom: none;">CONTROLE DIÁRIO DE PRODUÇÃO CARVÃO</th>
+        <th colspan="1" style="background-color:#00b04f; font-weight: bold;border-top: none; border-bottom: none;">
+            CONTROLE DIÁRIO DE PRODUÇÃO CARVÃO</th>
     </tr>
 </table>
 
-<div  style="display: flex; gap: 30px; width: 75%;">
-<!-- DADOS BATERIA -->
-<table style="width: 50%;">
-    <tr style="line-height: 0.8;">
-        <td colspan="3" style="border: none;font-weight: bold;">BATERIA FC4</td>
-    </tr>
-    <tr style="line-height: 0.8;">
-        <td colspan="2" style="text-align: left;font-weight: bold;">MÊS</td>
-        <td style="border-right: none; text-align: left;">outubro, 2023</td>
-    </tr>
+<div style="display: flex; gap: 30px; width: 80%;">
+    <!-- DADOS BATERIA -->
+    <table style="width: 50%;">
+        <tr style="line-height: 0.8;">
+            <td colspan="3" style="border: none;font-weight: bold;">BATERIA FC4</td>
+        </tr>
+        <tr style="line-height: 0.8;">
+            <td colspan="2" style="text-align: left;font-weight: bold;">MÊS</td>
+            <td style="border-right: none; text-align: left;">outubro, 2023</td>
+        </tr>
 
-    <tr style="line-height: 0.8;">
-        <td style="text-align: left;font-weight: bold;">MATERIAL</td>
-        <td>CARVÃO</td>
-        <td style="text-align: right; font-weight: bold;border-right: none;">303,51</td>
-    </tr>
-</table>
+        <tr style="line-height: 0.8;">
+            <td style="text-align: left;font-weight: bold;">MATERIAL</td>
+            <td>CARVÃO</td>
+            <td style="text-align: right; font-weight: bold;border-right: none;">303,51</td>
+        </tr>
+    </table>
 
-<table>
-    <tr style="line-height: 0.8;">
-        <td style="font-weight: bold; background-color: #edf0e6; border-top: none; border-left: none;">PROD CARVÃO PLAN</td>
-        <td style="font-weight: bold; background-color: #edf0e6; border-top: none;">2.680</td>
-        <td style="font-weight: bold; background-color: #edf0e6; text-align: left; border-top: none;">CAPACIDADE FORNO st</td>
-        <td style="font-weight: bold; border-right: none; background-color: #edf0e6;  text-align: right; border-top: none;">23,57</td>
-        <td style="border: none;font-weight: bold; background-color: #edf0e6; border-top: none;">Fconv</td>
+    <table>
+        <tr style="line-height: 0.8;">
+            <td style="font-weight: bold; background-color: #edf0e6; border-top: none; border-left: none;">PROD CARVÃO
+                PLAN</td>
+            <td style="font-weight: bold; background-color: #edf0e6; border-top: none;">2.680</td>
+            <td style="font-weight: bold; background-color: #edf0e6; text-align: left; border-top: none;">CAPACIDADE
+                FORNO st</td>
+            <td
+                style="font-weight: bold; border-right: none; background-color: #edf0e6;  text-align: right; border-top: none;">
+                23,57</td>
+            <td style="border: none;font-weight: bold; background-color: #edf0e6; border-top: none;">Fconv</td>
 
-    </tr>
+        </tr>
 
-    <tr style="line-height: 0.8;">
-        <td style="font-weight: bold; border-left: none;">DESCARGA LENHA PLAN</td>
-        <td style="font-weight: bold;">5.326</td>
-        <td style="font-weight: bold; text-align: left;">VOLUME FORNO mdc</td>
-        <td style="font-weight: bold;border-top: none;border-right: none; background-color: #edf0e6;  text-align: right;">11,86</td>
-        <td style="border-right: none; border-top: none; font-weight: bold;color: #00b04f; text-align: right;">1,99</td>
-    </tr>
+        <tr style="line-height: 0.8;">
+            <td style="font-weight: bold; border-left: none;">DESCARGA LENHA PLAN</td>
+            <td style="font-weight: bold;">5.326</td>
+            <td style="font-weight: bold; text-align: left;">VOLUME FORNO mdc</td>
+            <td
+                style="font-weight: bold;border-top: none;border-right: none; background-color: #edf0e6;  text-align: right;">
+                11,86</td>
+            <td style="border-right: none; border-top: none; font-weight: bold;color: #00b04f; text-align: right;">1,99
+            </td>
+        </tr>
 
-    <tr style="line-height: 0.8;">
-        <td style="font-weight: bold; background-color: #edf0e6; border-bottom: none; border-left: none;">PRODUÇÃO REAL</td>
-        <td style="font-weight: bold; background-color: #edf0e6; border-bottom: none;">1.992</td>
-        <td style="font-weight: bold; background-color: #edf0e6; text-align: left; border-bottom: none;"> N. DE FORNOS</td>
-        <td style="font-weight: bold; background-color: #edf0e6; text-align: right; border-bottom: none;">12,10</td>
-        <td style="border: none;font-weight: bold;color: red;text-decoration:underline;border-bottom: none; ">atiço 2%</td>
-    </tr>
-</table>
+        <tr style="line-height: 0.8;">
+            <td style="font-weight: bold; background-color: #edf0e6; border-bottom: none; border-left: none;">PRODUÇÃO
+                REAL</td>
+            <td style="font-weight: bold; background-color: #edf0e6; border-bottom: none;">1.992</td>
+            <td style="font-weight: bold; background-color: #edf0e6; text-align: left; border-bottom: none;"> N. DE
+                FORNOS</td>
+            <td style="font-weight: bold; background-color: #edf0e6; text-align: right; border-bottom: none;">12,10</td>
+            <td style="border: none;font-weight: bold;color: red;text-decoration:underline;border-bottom: none; ">atiço
+                2%</td>
+        </tr>
+    </table>
 </div>
 
-    <div style="display: flex; gap: 30px;">
-    
-    <table border="1" cellpadding="5" style="border: none;">
+<div style="display: flex; gap: 30px; width: 100%;">
+
+    <table cellpadding="5" style="border: none; width: 50%;">
         <thead>
             <tr>
                 <th colspan="11" style="background-color: #ccc6ba;">Operação / Fornos- UPC 1</th>
             </tr>
             <tr>
-                
+
                 <th style="background-color: #ccc6ba;">Data</th>
                 <th style="background-color: #ccc6ba;">Vazio</th>
                 <th style="background-color: #ccc6ba;">Carregado</th>
@@ -114,7 +130,7 @@
 
             {% if loop.first %}
             <tr style="background-color: #ccc6ba;">
-                
+
                 <td>{{ registro.data or '' }}</td>
                 <td>{{ registro.vazio or '-' }}</td>
                 <td>{{ registro.carregado or '-' }}</td>
@@ -126,13 +142,13 @@
                 <td>{{ registro.producao or '-' }}</td>
                 <td>{{ registro.expedicao or '-' }}</td>
                 <td>{{ registro.estoque or '-' }}</td>
-                
+
             </tr>
             {% else %}
-            
-            
+
+
             <tr>
-                
+
                 <td>{{ registro.data or '-' }}</td>
                 <td>{{ registro.vazio or '-' }}</td>
                 <td>{{ registro.carregado or '-' }}</td>
@@ -158,24 +174,24 @@
                 <td style="border: none;"></td>
                 <td style="border: none;">7.131,26</td>
                 <td style="border: none;"></td>
-                <td style="border: none;"></td>  
-            </tr>   
+                <td style="border: none;"></td>
+            </tr>
         </tbody>
     </table>
 
-    <table border="1" cellpadding="5">
+    <table cellpadding="5">
         <thead>
             <tr>
                 <th colspan="2" style="background-color: #ccc6ba;">Descarga Lenha</th>
                 <th colspan="1" style="background-color: #ccc6ba;">Lenha Forno</th>
                 <th colspan="1" style="background-color: #ccc6ba;">FCONV</th>
             </tr>
-            <tr >
-                
+            <tr>
+
                 <th style="background-color: #ccc6ba;">Consumo Lenha</th>
                 <th style="background-color: #ccc6ba;">Consumo Acumulado</th>
                 <th style="background-color: #ccc6ba;">Descarga</th>
-                <th style="background-color: #ccc6ba;">mst/mdc</th>               
+                <th style="background-color: #ccc6ba;">mst/mdc</th>
             </tr>
         </thead>
         <tbody>
@@ -183,24 +199,24 @@
 
             {% if loop.first %}
             <tr style="background-color: #ccc6ba;">
-                
+
                 <td>{{ registro.consumo or '-' }}</td>
                 <td>{{ registro.consumoacomulado or '-' }}</td>
                 <td>{{ registro.descarga or '-' }}</td>
                 <td style="background-color: #ccc6ba;">{{ registro.mst_mdc or '-' }}</td>
             </tr>
-            {% endif %}     
+            {% endif %}
             <tr>
-                
+
                 <td>{{ registro.consumo or '-' }}</td>
                 <td>{{ registro.consumoacomulado or '-' }}</td>
                 <td>{{ registro.descarga or '-' }}</td>
-                <td style="background-color: #ccc6ba;">{{ registro.mst_mdc or '-' }}</td>      
+                <td style="background-color: #ccc6ba;">{{ registro.mst_mdc or '-' }}</td>
             </tr>
             {% endfor %}
-            
+
         </tbody>
-        
+
     </table>
 </div>
 
@@ -209,13 +225,16 @@
 <table style="text-align: center; font-family: Arial; font-size: 14px;width: 40%; margin-left: 50px;">
     <!-- Linha superior com agrupamentos -->
     <tr>
-        <td colspan="2" style="border-bottom: 1px solid black; border-left: none;border-right: none;border-top: none;">3,9</td>
-        <td colspan="2" style="border-bottom: 1px solid black; border-left: none;border-right: none; border-top: none;">5,8</td>
+        <td colspan="2" style="border-bottom: 1px solid black; border-left: none;border-right: none;border-top: none;">
+            3,9</td>
+        <td colspan="2" style="border-bottom: 1px solid black; border-left: none;border-right: none; border-top: none;">
+            5,8</td>
     </tr>
 
     <!-- Cabeçalho principal -->
     <tr>
-        <td colspan="4" style="border-bottom: 1px solid black; font-weight: bold; border-left: none;border-right: none;">CICLO</td>
+        <td colspan="4"
+            style="border-bottom: 1px solid black; font-weight: bold; border-left: none;border-right: none;">CICLO</td>
     </tr>
 
     <!-- Subcabeçalho -->
@@ -226,7 +245,7 @@
         <td style="border-top: 2px solid black; border-left: none;border-right: none;"> </td>
         <td style="border-bottom: 1px solid black; border-left: none;border-right: none;">manut</td>
         <td style="border-bottom: 1px solid black; border-left: none;border-right: none;">total</td>
-        
+
     </tr>
 
     <!-- Linha de dados -->
@@ -236,9 +255,9 @@
         <td style="border-left: none;border-right: none;border-bottom: none;">6,01</td>
         <td style="border-left: none;border-right: none;border-bottom: none;"> </td>
         <td style="border-left: none;border-right: none;border-bottom: none;">-</td>
-        <td style="background-color: yellow; font-weight: bold; border-left: none;border-right: none;border-bottom: none;">10,36</td>
+        <td
+            style="background-color: yellow; font-weight: bold; border-left: none;border-right: none;border-bottom: none;">
+            10,36</td>
     </tr>
 </table>
-
-</body>
-</html>
+{% endblock %}
