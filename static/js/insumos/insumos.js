@@ -30,3 +30,69 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Adicionar lenha ao estoque');
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modalInsumo = document.getElementById('modalCadastroInsumo');
+    const closeInsumo = document.getElementById('closeCadastroInsumo');
+    const formInsumo = document.getElementById('formInsumo');
+    const btnAbrirModalInsumo = document.getElementById('btnAbrirModalInsumo');
+    const listaInsumos = document.getElementById('listaInsumos');
+
+    const insumos = [];
+
+    btnAbrirModalInsumo.addEventListener('click', () => {
+        modalInsumo.style.display = 'flex';
+    });
+
+    closeInsumo.addEventListener('click', () => {
+        modalInsumo.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modalInsumo) {
+            modalInsumo.style.display = 'none';
+        }
+    });
+
+    formInsumo.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nome = formInsumo.nomeInsumo.value.trim();
+        const quantidade = formInsumo.quantidade.value;
+        const unidade = formInsumo.unidade.value;
+
+        const novoInsumo = { nome, quantidade, unidade };
+        insumos.push(novoInsumo);
+
+        renderizarInsumos();
+
+        formInsumo.reset();
+        modalInsumo.style.display = 'none';
+    });
+
+    function renderizarInsumos() {
+        listaInsumos.innerHTML = '';
+
+        if (insumos.length === 0) {
+            listaInsumos.innerHTML = '<p style="color: #888;">Nenhum insumo cadastrado.</p>';
+            return;
+        }
+
+        insumos.forEach((insumo) => {
+            const card = document.createElement('div');
+            card.className = 'insumo-card';
+
+            card.innerHTML = `
+                <div class="item-info">
+                            
+                            <span>${insumo.nome}</span>
+                        </div>
+                        <div class="item-status in-stock">
+                            <span>${insumo.quantidade} ${insumo.unidade}</span>
+                        </div>
+            `;
+
+            listaInsumos.appendChild(card);
+        });
+    }
+});

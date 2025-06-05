@@ -9,15 +9,15 @@
 {% block content %}
 <section class="insumos">
     <h1><i class="fas fa-boxes"></i> Controle de Insumos e Materiais</h1>
-    
+
     <div class="insumos-grid">
         <!-- Gestão de Matéria-Prima -->
         <div class="card materia-prima">
             <div class="card-header">
                 <h2><i class="fas fa-tree"></i> Gestão de Lenha</h2>
-                <button class="btn-icon" id="adicionarLenha">
+                <!-- <button class="btn-icon" id="adicionarLenha">
                     <i class="fas fa-plus-circle"></i>
-                </button>
+                </button> -->
             </div>
             <div class="card-body">
                 <div class="stock-level">
@@ -47,31 +47,38 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Controle de Estoque -->
         <div class="card estoque">
             <div class="card-header">
+
                 <h2><i class="fas fa-warehouse"></i> Níveis de Estoque</h2>
             </div>
             <div class="card-body">
+                <button class="btn-icon" id="btnAbrirModalInsumo">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
                 <div class="inventory-items">
                     <div class="inventory-item">
-                        <div class="item-info">
+                        <!-- <div class="item-info">
                             <i class="fas fa-fire-extinguisher"></i>
                             <span>Extintores</span>
                         </div>
                         <div class="item-status in-stock">
                             <span>12 unidades</span>
-                        </div>
+                        </div> -->
                     </div>
-                    <!-- Mais itens... -->
+                    <div id="listaInsumos" class="insumo-lista" style="margin-top: 20px;">
+                        <p style="color: #888;">Cadastro estoque.</p>
+                    </div>
+                
                 </div>
-                <button class="btn-inventory">
+                <!-- <button class="btn-inventory">
                     <i class="fas fa-clipboard-list"></i> Gerar Relatório
-                </button>
+                </button> -->
             </div>
         </div>
-        
+
         <!-- Previsão de Reposição -->
         <div class="card reposicao">
             <div class="card-header">
@@ -86,6 +93,44 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal de Cadastro de Insumos -->
+    <div class="modal-overlay" id="modalCadastroInsumo" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2><i class="fas fa-boxes"></i> Cadastrar Insumo</h2>
+                <span class="close-modal" id="closeCadastroInsumo">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="formInsumo">
+                    <div class="form-group">
+                        <label for="nomeInsumo">Nome do Insumo:</label>
+                        <input type="text" id="nomeInsumo" name="nomeInsumo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unidade">Unidade:</label>
+                        <select id="unidade" name="unidade" required>
+                            <option value="">Selecione</option>
+                            <option value="kg">Kg</option>
+                            <option value="litros">Litros</option>
+                            <option value="unidades">Unidades</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </section>
 {% endblock %}
 

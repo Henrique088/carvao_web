@@ -20,6 +20,7 @@
         <!-- <a href="/relatorios"><i class="fas fa-chart-line"></i> Relatórios</a> -->
         <ul class="has-submenu">
             <li class="{% if request.path.startswith('/relatorios') %}open{% endif %}">
+                <div class="junto">
                 <a href="/relatorios">
                     <i class="fas fa-chart-line"></i> Relatórios
                 </a>
@@ -27,6 +28,7 @@
                     <i class="fas submenu-icon {% if request.path.startswith('/relatorios') %}fa-chevron-up{% else %}fa-chevron-down{% endif %}"></i>
 
                 </button>
+                </div>
                 <ul class="submenu">
                     <li><a href="/producao_consolidado">Produção Consolidado</a></li>
                     <li><a href="/producao_diario">Produção Diário</a></li>
