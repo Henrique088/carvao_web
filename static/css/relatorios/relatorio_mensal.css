@@ -56,7 +56,7 @@ body {
     gap: 60px; 
     position: absolute; 
     left: 650px; 
-    width: 100%;
+    /* width: 100%; */
   }
   @media (max-width: 768px) {
     .legenda{

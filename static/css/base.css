@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
+    height: 100%;
     
 }
 
@@ -27,6 +28,8 @@ nav {
     justify-content:safe;
     align-items: left;
     border-right:  #3498db solid 4px;
+    
+    
     
     
     
